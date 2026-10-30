@@ -18,6 +18,11 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Use patched MobileGlues branch
+        run: |
+          git -C MobileGlues fetch origin fix-glsl-legacy-conversion
+          git -C MobileGlues checkout FETCH_HEAD
+
       - name: Set current date as env variable
         run: echo "date_today=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
